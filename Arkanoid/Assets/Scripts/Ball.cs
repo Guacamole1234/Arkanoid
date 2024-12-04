@@ -14,6 +14,13 @@ public class Ball : MonoBehaviour
         rb_ball.AddForce(velocity*speed);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("DeadZone"))
+        {
+            FindObjectOfType<GameManager>().loseHealth();
+        }
+    }
 
     void Update()
     {
